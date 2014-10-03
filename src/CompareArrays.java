@@ -8,8 +8,6 @@ public class CompareArrays {
 	{
 
 		
-
-		
 		/* Repeatedly read integer values from the keyboard until the user types "0" (zero, without the quotes).
 		 * Ignore repeated occurrences of a particular value in the data, so check each value to see whether it already occurs in the array before storing it.
 		 * Store those values in the first array Array1
