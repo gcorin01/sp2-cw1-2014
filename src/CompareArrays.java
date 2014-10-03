@@ -1,13 +1,22 @@
+import java.util.Scanner;
 
 public class CompareArrays {
+	private static final int ARRAY_SIZE     = 100;
+	private static final int TRIGGER_NUMBER = 0;
+	
 	public static void main(String[] args)
 	{
+		int[] Array1 = new int[ARRAY_SIZE];
+		int[] Array2 = new int[ARRAY_SIZE];
+
 		
-		// Constant values should be declared as final and static (e.g. array size, trigger number zero)
+		Scanner input = new Scanner(System.in);
+		
 		
 		// Create empty integer array Array1 that will hold up to 100 integers.
 
 		// Create empty integer arrays Array2 that will hold up to 100 integers.
+
 
 		
 		/* Repeatedly read integer values from the keyboard until the user types "0" (zero, without the quotes).
