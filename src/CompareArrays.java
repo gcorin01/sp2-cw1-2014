@@ -6,6 +6,7 @@ public class CompareArrays {
 	
 	public static void main(String[] args)
 	{
+<<<<<<< HEAD
 		int[] Array1 = new int[ARRAY_SIZE];
 		int[] Array2 = new int[ARRAY_SIZE];
 
@@ -17,6 +18,8 @@ public class CompareArrays {
 
 		// Create empty integer arrays Array2 that will hold up to 100 integers.
 
+=======
+>>>>>>> 9d86d9d0c1931aa06d8135be7326f1204dd19685
 
 		
 		/* Repeatedly read integer values from the keyboard until the user types "0" (zero, without the quotes).
