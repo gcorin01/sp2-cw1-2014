@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CompareArrays {
@@ -10,13 +11,22 @@ public class CompareArrays {
         String output = "";
 
         array1 = fillArray("array1");
-        array2 = fillArray("array2");
-        
+        // array2 = fillArray("array2");
 
+        int arraySize = array1.length;
+        System.out.println("Initial size: " + arraySize); // debug
         for (int element : array1) {
-            output = output + ", " + "element";
+
+            if (arraySize != 1) {
+                output = output + element + ", ";
+                arraySize = arraySize--;
+                System.out.println("Loop: " + (arraySize--));  // debug
+            } else {
+                output = output + element;
+            }
+
         }
-        
+
         if (array1.length == 0 && array2.length == 0) {
             System.out.println("Both arrays are empty");
         } else {
@@ -25,7 +35,7 @@ public class CompareArrays {
             // System.out.println("Values occurring in both arrays (intersection): ");
             // System.out.println("Number of intersections: ");
             // System.out.println("Values occurring only in the first array: ");
-            // System.out.println("Values occurring only in the second array: ");     
+            // System.out.println("Values occurring only in the second array: ");
         }
 
         /*
@@ -53,23 +63,38 @@ public class CompareArrays {
     }
 
     public static int[] fillArray(String arrayNumber) {
-        int[] tempArray = new int[ARRAY_SIZE];
         int currentSize = 0;
+        ArrayList<Integer> tempArray = new ArrayList<Integer>();
 
         Scanner input = new Scanner(System.in);
         System.out
                 .println("INSTRUCTIONS: type each integer you like followed by "
                         + "the ENTER key. To stop type \"0\"(zero, without the quotes) "
                         + "and hit the ENTER key. \n\nType your first integer for "
-                        + arrayNumber + ": ");
+                        + arrayNumber + ":");
 
-        while (input.hasNextInt() && input.nextInt() != TRIGGER_NUMBER) {
-            tempArray[currentSize] = input.nextInt();
-            System.out.println("Please enter the next integer: ");
-            currentSize++;
+        int tempInput = input.nextInt();
+        
+        if (tempInput != TRIGGER_NUMBER) {
+            do {
+                tempArray.add(tempInput);
+                System.out.println(currentSize + " " + tempInput);  // debug
+                currentSize++;
+                System.out.println("Enter your next integer:");
+                tempInput = input.nextInt();
+            } while (tempInput != TRIGGER_NUMBER);
+        } else {
+            input.close();            
         }
-        input.close();
-        return tempArray;
+
+        int[] array = new int[tempArray.size()];
+        int index = 0;
+
+        for (int element : tempArray) {
+            array[index] = element;
+            index++;
+        }
+        return array;
         // System.out.println("Both arrays are empty");
     }
 }
