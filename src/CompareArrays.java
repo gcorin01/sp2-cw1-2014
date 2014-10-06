@@ -20,17 +20,23 @@ public class CompareArrays {
         array1 = fillArray("array 1");
         array2 = fillArray("array 2");
 
+        String array1Values = getValueEntered(array1);
+        String array2Values = getValueEntered(array2);
+
+        String[] intersection = new String[2];
+        intersection = getIntersection(array1, array2);
+        String numberOfCommonValues = intersection[0];
+        String commonValues = intersection[1];
+
         if (array1.length == 0 && array2.length == 0) {
             System.out.println("Both arrays are empty");
         } else {
-            System.out.println("Value(s) entered in array 1: "
-                    + getValueEntered(array1));
-            System.out.println("Value(s) entered in array 2: "
-                    + getValueEntered(array2));
+            System.out.println("Value(s) entered in array 1: " + array1Values);
+            System.out.println("Value(s) entered in array 2: " + array2Values);
             System.out
                     .println("Value(s) occurring in both arrays (intersection): "
-                            + getIntersection(array1, array2));
-            // System.out.println("Number of intersections: ");
+                            + commonValues);
+            System.out.println("Number of intersections: " + numberOfCommonValues);
             // System.out.println("Values occurring only in the first array: ");
             // System.out.println("Values occurring only in the second array: ");
         }
@@ -125,16 +131,18 @@ public class CompareArrays {
      *         both arrays and the number of intersections found, if any.
      * @since 0.1
      */
-    private static String setIntersection(int[] array1, int[] array2) {
-        String intersection = "";
+    private static String[] setIntersection(int[] array1, int[] array2) {
+        String[] intersection = new String[2];
         String uniqueInArray1 = "";
         String uniqueInArray2 = "";
+        String commonValues = "";
+        String numberOfCommonValues = "";
         int matchFound = 0;
 
         for (int element : array1) {
             for (int value : array2) {
                 if (element == value) {
-                    intersection = intersection + value + ", ";
+                    commonValues = commonValues + value + ", ";
                     matchFound++;
                     break;
                 } else {
@@ -145,11 +153,16 @@ public class CompareArrays {
         }
 
         if (matchFound == 0) {
-            intersection = "No intersection found";
+            commonValues = "No intersection found";
         } else {
-            intersection = intersection.substring(0,
-                    (intersection.length() - 2));
+            commonValues = commonValues.substring(0,
+                    (commonValues.length() - 2));
         }
+        
+        numberOfCommonValues = "" + matchFound;
+        intersection[0] = numberOfCommonValues;
+        intersection[1] = commonValues;
+        
         return intersection;
     }
 
@@ -166,8 +179,9 @@ public class CompareArrays {
      *         together with the number of occurrencies.
      * @since 0.1
      */
-    public static String getIntersection(int[] array1, int[] array2) {
-        String intersection = setIntersection(array1, array2);
+    public static String[] getIntersection(int[] array1, int[] array2) {
+        String[] intersection = new String[2];
+        intersection = setIntersection(array1, array2);
         return intersection;
     }
 
