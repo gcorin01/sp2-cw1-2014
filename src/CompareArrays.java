@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A class to compare the values of two arrays. This is Coursework One to be
+ * submitted for the purposes of Birkbeck, University of London's module
+ * Software and Programming II (2014_15).
+ * 
+ * @author Gabriel Corinaldesi (gcorin01)
+ * @version 0.1, 06/10/2014
+ */
 public class CompareArrays {
     private static final int ARRAY_SIZE     = 100;
     private static final int SENTINEL_VALUE = 0;
@@ -21,16 +29,29 @@ public class CompareArrays {
                     + getValueEntered(array2));
             System.out
                     .println("Value(s) occurring in both arrays (intersection): "
-                            + getintersection(array1, array2));
+                            + getIntersection(array1, array2));
             // System.out.println("Number of intersections: ");
             // System.out.println("Values occurring only in the first array: ");
             // System.out.println("Values occurring only in the second array: ");
         }
-
     }
 
-    // Enter method comment here
-    private static int[] fillArray(String arrayNumber) {
+    /**
+     * Takes the input from the user and creates and array of integers.
+     * <p>
+     * The user can enter as many values as wanted but the program is not
+     * designed to check when and if it exceeds the max size of the array
+     * calling this method which holds the inputs from the user.
+     * <p>
+     * This method calls another method
+     * <code>removeDuplicates<code> to remove duplicate values entered by the user, if any.
+     * 
+     * @param arrayNumber
+     *            the name of the array to fill.
+     * @return the set of numbers entered by the user.
+     * @since 0.1
+     */
+    public static int[] fillArray(String arrayNumber) {
         ArrayList<Integer> tempArray = new ArrayList<Integer>();
 
         Scanner input = new Scanner(System.in);
@@ -55,7 +76,15 @@ public class CompareArrays {
         return outputArray;
     }
 
-    // Enter method comment here
+    /**
+     * Separates array values with a comma and a space unless it is the last
+     * value of the array.
+     * 
+     * @param array
+     *            if any, contains the values to be separated.
+     * @return if any, a string of values separated by a comma and a space.
+     * @since 0.1
+     */
     private static String setValueEntered(int[] array) {
         int arraySize = array.length;
         String output = "";
@@ -71,13 +100,31 @@ public class CompareArrays {
         return output;
     }
 
-    // Enter method comment here
-    private static String getValueEntered(int[] array) {
+    /**
+     * Sends the array of values entered by the user to be separated by a comma
+     * and a space.
+     * 
+     * @param array
+     *            if any, contains the values to be separated.
+     * @return a string of values separated by a comma and a space.
+     * @since 0.1
+     */
+    public static String getValueEntered(int[] array) {
         String output = setValueEntered(array);
         return output;
     }
 
-    // Enter method comment here
+    /**
+     * Compares two arrays to find the common values, if any.
+     * 
+     * @param array1
+     *            the first set of numbers entered by the user.
+     * @param array2
+     *            the second set of numbers entered by the user.
+     * @return a multidimensional array containing the common values found in
+     *         both arrays and the number of intersections found, if any.
+     * @since 0.1
+     */
     private static String setIntersection(int[] array1, int[] array2) {
         String intersection = "";
         String uniqueInArray1 = "";
@@ -106,13 +153,32 @@ public class CompareArrays {
         return intersection;
     }
 
-    // Enter method comment here
-    private static String getintersection(int[] array1, int[] array2) {
+    /**
+     * Sends two arrays of values entered by the user to be compared in order to
+     * establish whether any intersection if found and, if any, how many are
+     * found.
+     * 
+     * @param array1
+     *            the first set of numbers entered by the user.
+     * @param array2
+     *            the second set of numbers entered by the user.
+     * @return if any, the intersection values separated by a comma and a space
+     *         together with the number of occurrencies.
+     * @since 0.1
+     */
+    public static String getIntersection(int[] array1, int[] array2) {
         String intersection = setIntersection(array1, array2);
         return intersection;
     }
 
-    // Enter method comment here
+    /**
+     * Takes out from the user inputs any duplicate value if any are found.
+     * 
+     * @param array
+     *            the input from the user with possible duplicated values.
+     * @return a set of unique integers.
+     * @since 0.1
+     */
     private static int[] removeDuplicates(ArrayList<Integer> array) {
         ArrayList<Integer> uniqueValuesArray = new ArrayList<Integer>();
 
